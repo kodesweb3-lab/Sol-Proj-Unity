@@ -153,7 +153,7 @@ export default function ChessGame() {
   }, [])
 
   // Simple AI move
-  const getAIMove = useCallback((board: string[][][], difficulty: string): { from: { row: number; col: number }; to: { row: number; col: number } } | null => {
+  const getAIMove = useCallback((board: (string | null)[][], difficulty: string): { from: { row: number; col: number }; to: { row: number; col: number } } | null => {
     const allMoves: { from: { row: number; col: number }; to: { row: number; col: number }; score: number }[] = []
 
     // Find all pieces of current turn (black since AI plays black)
