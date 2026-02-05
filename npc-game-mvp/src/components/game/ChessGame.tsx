@@ -56,7 +56,9 @@ export default function ChessGame() {
     const addMove = (r: number, c: number) => {
       if (r >= 0 && r < 8 && c >= 0 && c < 8) {
         const target = board[r][c]
-        if (!target || (isWhite !== target === target.toUpperCase())) {
+        if (!target) {
+          moves.push({ row: r, col: c })
+        } else if (isWhite !== (target === target.toUpperCase())) {
           moves.push({ row: r, col: c })
         }
       }
@@ -86,13 +88,14 @@ export default function ChessGame() {
           const c = col + dc * i
           if (r < 0 || r >= 8 || c < 0 || c >= 8) break
           const target = board[r][c]
-          if (target) {
-            if (isWhite !== target === target.toUpperCase()) {
+          if (!target) {
+            moves.push({ row: r, col: c })
+          } else {
+            if (isWhite !== (target === target.toUpperCase())) {
               moves.push({ row: r, col: c })
             }
             break
           }
-          moves.push({ row: r, col: c })
         }
       })
     }
@@ -112,13 +115,14 @@ export default function ChessGame() {
           const c = col + dc * i
           if (r < 0 || r >= 8 || c < 0 || c >= 8) break
           const target = board[r][c]
-          if (target) {
-            if (isWhite !== target === target.toUpperCase()) {
+          if (!target) {
+            moves.push({ row: r, col: c })
+          } else {
+            if (isWhite !== (target === target.toUpperCase())) {
               moves.push({ row: r, col: c })
             }
             break
           }
-          moves.push({ row: r, col: c })
         }
       })
     }
@@ -131,13 +135,14 @@ export default function ChessGame() {
           const c = col + dc * i
           if (r < 0 || r >= 8 || c < 0 || c >= 8) break
           const target = board[r][c]
-          if (target) {
-            if (isWhite !== target === target.toUpperCase()) {
+          if (!target) {
+            moves.push({ row: r, col: c })
+          } else {
+            if (isWhite !== (target === target.toUpperCase())) {
               moves.push({ row: r, col: c })
             }
             break
           }
-          moves.push({ row: r, col: c })
         }
       })
     }
