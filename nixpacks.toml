@@ -2,7 +2,7 @@
 build_command = "cd npc-game-mvp && npm install && npm run build"
 
 [start]
-start_command = "cd npc-game-mvp && npm run start"
+start_command = "npm start"
 
 [dependencies]
 nodejs = "20"

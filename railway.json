@@ -6,7 +6,7 @@
     "rootDir": "npc-game-mvp"
   },
   "deploy": {
-    "startCommand": "cd npc-game-mvp && npm run start",
+    "startCommand": "npm start",
     "restartPolicy": "on-failure",
     "healthcheckPath": "/",
     "healthcheckTimeout": 30,
