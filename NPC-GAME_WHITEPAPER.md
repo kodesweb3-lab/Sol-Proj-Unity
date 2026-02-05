@@ -37,11 +37,11 @@
 | Metric | Value |
 |--------|-------|
 | **Token Symbol** | $NPC |
-| **Initial Supply** | 1,000,000,000 (1B) |
-| **Presale Price** | 1 SOL = 20,000 $NPC |
-| **Hard Cap** | 50 SOL |
+| **Initial Supply** | 100,000,000 (100M) |
+| **Presale Price** | 1 SOL = 250,000 $NPC |
+| **Hard Cap** | 40 SOL |
 | **Launch Timeline** | 4-6 weeks |
-| **Target Monthly Revenue** | 10-35 SOL (Year 1) |
+| **Target Monthly Revenue** | 10-50 SOL (Year 1) |
 
 ### The Hook
 
@@ -203,47 +203,43 @@ STEP 6: WINNER TAKES 70%
 
 | Allocation | Amount | % | Vesting |
 |-----------|--------|---|---------|
-| **Presale** | 400,000,000 | 40% | TGE 100% |
-| **Liquidity** | 200,000,000 | 20% | Locked 2 years |
-| **Treasury** | 250,000,000 | 25% | Agent earnings |
-| **Team** | 100,000,000 | 10% | 12-month linear |
-| **Airdrop** | 50,000,000 | 5% | 50% TGE, 6-month cliff |
+| **Presale** | **40,000,000** | **40%** | TGE 100% |
+| **Liquidity** | **20,000,000** | **20%** | Locked 2 years |
+| **Treasury** | **25,000,000** | **25%** | Agent earnings |
+| **Team** | **10,000,000** | **10%** | 12-month linear |
+| **Airdrop** | **5,000,000** | **5%** | 50% TGE, 6-month cliff |
 
-**Total Supply:** 1,000,000,000 $NPC
+**Total Supply:** 100,000,000 $NPC
 
 ### 5.2 Presale Structure
 
 | Parameter | Value |
 |-----------|-------|
-| **Price** | 1 SOL = 20,000 $NPC |
-| **Hard Cap** | 50 SOL |
+| **Price** | **1 SOL = 250,000 $NPC** |
+| **Hard Cap** | 40 SOL |
 | **Soft Cap** | 10 SOL |
-| **Min Purchase** | 0.5 SOL |
-| **Max Purchase** | 5 SOL per wallet |
-| **Presale Duration** | 2 weeks |
-| **Vesting** | 100% at TGE |
+| **Min Purchase** | 0.25 SOL (62,500 $NPC) |
+| **Max Purchase** | 5 SOL (1,250,000 $NPC) |
+| **Duration** | 2 weeks |
 
-**Why 20K tokens per SOL?**
-- Lower supply = higher perceived value
-- Matches market rates for gaming tokens
-- Leaves room for appreciation
+### 5.3 Presale Tranches
 
-### 5.3 Presale Allocation
-
-| Tranche | SOL Raised | Tokens Sold | Bonus |
-|---------|------------|-------------|-------|
-| Early Bird (Week 1) | First 10 SOL | 20,000/$SOL | 10% bonus |
-| Standard (Week 2) | Next 40 SOL | 20,000/$SOL | No bonus |
+| Tranche | Price | SOL Target | Tokens | Bonus |
+|---------|-------|------------|--------|-------|
+| Early Bird | 1 SOL = 300K | First 10 SOL | 10M | +20% |
+| Standard | 1 SOL = 250K | Next 30 SOL | 30M | None |
 
 ### 5.4 Use of Funds
 
 | Category | Amount | % | Purpose |
 |----------|--------|---|---------|
-| **Liquidity Pool** | 25-30 SOL | 50-60% | DEX liquidity for trading |
-| **Development** | 10-15 SOL | 20-30% | Game engines, smart contracts |
-| **Marketing** | 5-8 SOL | 10-16% | Awareness campaigns |
-| **Infrastructure** | 3-5 SOL | 6-10% | Servers, RPC, hosting |
-| **Buffer** | 2-4 SOL | 4-8% | Unexpected costs |
+| **Liquidity Pool** | **15-20 SOL** | **35-50%** | DEX liquidity (Raydium) |
+| **Development** | **10-15 SOL** | **25-35%** | Game engines, contracts |
+| **Marketing** | **5-8 SOL** | **12-20%** | Awareness, influencers |
+| **Infrastructure** | **3-5 SOL** | **8-12%** | Servers, RPC, hosting |
+| **Buffer** | **2-4 SOL** | **5-10%** | Unexpected costs |
+
+**Total Budget:** ~40-50 SOL (matching presale raise)
 
 ---
 
