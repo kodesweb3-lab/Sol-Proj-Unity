@@ -13,12 +13,12 @@ export default function Header() {
               </Link>
             </div>
             
-            <nav className="hidden md:flex items-center space-x-8">
+            <nav className="hidden md:flex items-center space-x-6">
+              <Link href="/play" className="text-primary-400 hover:text-primary-300 transition font-semibold">🎮 Play</Link>
+              <Link href="/tournaments" className="text-gray-300 hover:text-white transition">🏆 Tournaments</Link>
+              <Link href="/leaderboard" className="text-gray-300 hover:text-white transition">📊 Leaderboard</Link>
               <a href="#features" className="text-gray-300 hover:text-white transition">Features</a>
               <a href="#tokenomics" className="text-gray-300 hover:text-white transition">Tokenomics</a>
-              <a href="#roadmap" className="text-gray-300 hover:text-white transition">Roadmap</a>
-              <Link href="/play" className="text-primary-400 hover:text-primary-300 transition font-semibold">🎮 Play</Link>
-              <a href="#faq" className="text-gray-300 hover:text-white transition">FAQ</a>
             </nav>
 
             <div className="flex items-center space-x-4">
