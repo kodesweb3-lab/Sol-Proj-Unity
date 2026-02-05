@@ -41,9 +41,9 @@ A comprehensive collection of Solana core concepts, token operations, and CPI pa
 
 | Partner | Integration | Status |
 |---------|-------------|--------|
-| **Realms** | DAO Governance + Launchpad | ✅ Planned |
-| **Raydium** | DEX Liquidity | ✅ Planned |
 | **Solana** | Core Blockchain | ✅ Native |
+| **Raydium** | DEX Liquidity | ✅ Planned |
+| **Google Sheets** | Contribution Tracking | ✅ Simple |
 
 ### Revenue Model
 

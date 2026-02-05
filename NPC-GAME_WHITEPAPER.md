@@ -145,26 +145,28 @@ Current solutions:
 | **Cost Effective** | No salaries, only server costs |
 | **Provably Fair** | All moves verifiable on-chain |
 
-### 3.3 Realms Integration
+### 3.3 Simple, Trustless Presale
 
-NPC-GAME integrates with **Realms** for institutional-grade infrastructure:
+NPC-GAME uses a **direct transfer model** for maximum simplicity:
 
-| Feature | Implementation |
-|---------|----------------|
-| **Launchpad Presale** | Native Realms launchpad program |
-| **DAO Governance** | $NPC holder voting on game features |
-| **Treasury Multisig** | 3/5 multisig for treasury security |
+| Component | Implementation |
+|-----------|----------------|
+| **Treasury Wallet** | Secure SOL wallet (Robert's control) |
+| **Contribution Tracking** | Google Sheet (real-time) |
+| **Token Distribution** | Batch transfers after TGE |
+| **Transparency** | All TX signatures recorded |
 
-**Realms Programs:**
-- Governance: `GovER5Lthms3bLBqWub97yVrMmEogzX7xNjdXpPPCVZw`
-- Launchpad: `ReaLM68X8dXLz35oXqofDYkNWiBFZr4FcefSJyTr9Yh`
-- API: `https://v2.realms.today/api/v1`
+**Presale Flow:**
+1. Contributor fills Google Form
+2. Sends SOL to treasury wallet
+3. ClawKogaionAgent logs contribution
+4. After TGE: Batch $NPC distribution
 
 **Benefits:**
-- ✅ Trustless presale execution
-- ✅ Community governance
-- ✅ Multisig treasury security
-- ✅ Built on proven Realms infrastructure
+- ✅ No complex smart contracts
+- ✅ 100% transparent (all visible)
+- ✅ Simple to audit
+- ✅ No intermediaries
 
 ---
 
