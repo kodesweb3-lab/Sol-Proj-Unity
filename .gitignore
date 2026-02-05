@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+.env
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editor directories
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Coverage
+coverage/
+
+# Build
+dist/
+build/
+.next/

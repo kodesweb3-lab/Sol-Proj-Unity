@@ -1,0 +1,10 @@
+{
+  "name": "npc-game-root",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "cd npc-game-mvp && npm install && npm run build",
+    "start": "cd npc-game-mvp && npm run start"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

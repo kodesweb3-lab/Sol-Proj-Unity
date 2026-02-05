@@ -1,0 +1,25 @@
+{
+  "$schema": "https://railway.com/railway.schema.json",
+  "build": {
+    "builder": "NIXPACKS",
+    "buildCommand": "npm install && npm run build"
+  },
+  "deploy": {
+    "startCommand": "npm run start",
+    "restartPolicy": "on-failure",
+    "healthcheckPath": "/",
+    "healthcheckTimeout": 30,
+    "directory": "."
+  },
+  "environments": [
+    {
+      "name": "production",
+      "build": {
+        "builder": "NIXPACKS"
+      }
+    }
+  ],
+  "variables": {
+    "NODE_ENV": "production"
+  }
+}
