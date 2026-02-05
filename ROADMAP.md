@@ -18,14 +18,22 @@
 
 | Task | Duration | Owner | Status |
 |------|----------|-------|--------|
+| **Realms Integration** | 2 days | Dev | ⏳ |
 | Legal review | 3 days | Legal | ⏳ |
 | Smart contract audit | 5 days | Auditor | ⏳ |
 | Website deployment | 2 days | Dev | ⏳ |
 | Marketing assets | 3 days | Marketing | ⏳ |
 
+**Realms Launchpad Setup:**
+- [ ] Create Realms DAO for $NPC governance
+- [ ] Configure presale via Realms launchpad
+- [ ] Set up multisig treasury (3/5)
+- [ ] Test presale flow end-to-end
+
 **Deliverables:**
 - [ ] Audited smart contracts
-- [ ] Live presale website
+- [ ] Realms DAO live
+- [ ] Presale website with Realms integration
 - [ ] Marketing kit (graphics, copy)
 - [ ] Terms of service
 

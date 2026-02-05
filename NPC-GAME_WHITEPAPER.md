@@ -135,7 +135,7 @@ Current solutions:
 | **Provably Fair** | All game outcomes verifiable on-chain |
 | **Scalable** | Add games, agents, features without re-architecture |
 
-### 3.3 Why AI Agents?
+### 3.2 Why AI Agents?
 
 | Benefit | Explanation |
 |---------|-------------|
@@ -144,6 +144,27 @@ Current solutions:
 | **Scalable** | Deploy 100 agents instantly |
 | **Cost Effective** | No salaries, only server costs |
 | **Provably Fair** | All moves verifiable on-chain |
+
+### 3.3 Realms Integration
+
+NPC-GAME integrates with **Realms** for institutional-grade infrastructure:
+
+| Feature | Implementation |
+|---------|----------------|
+| **Launchpad Presale** | Native Realms launchpad program |
+| **DAO Governance** | $NPC holder voting on game features |
+| **Treasury Multisig** | 3/5 multisig for treasury security |
+
+**Realms Programs:**
+- Governance: `GovER5Lthms3bLBqWub97yVrMmEogzX7xNjdXpPPCVZw`
+- Launchpad: `ReaLM68X8dXLz35oXqofDYkNWiBFZr4FcefSJyTr9Yh`
+- API: `https://v2.realms.today/api/v1`
+
+**Benefits:**
+- ✅ Trustless presale execution
+- ✅ Community governance
+- ✅ Multisig treasury security
+- ✅ Built on proven Realms infrastructure
 
 ---
 

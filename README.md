@@ -35,6 +35,15 @@ A comprehensive collection of Solana core concepts, token operations, and CPI pa
 | [WHITEPAPER.md](NPC-GAME_WHITEPAPER.md) | Complete white paper |
 | [ROADMAP.md](ROADMAP.md) | Detailed timeline |
 | [TOKENOMICS.md](TOKENOMICS.md) | Final token economics |
+| [REALMS_INTEGRATION.md](REALMS_INTEGRATION.md) | DAO + Launchpad integration |
+
+### Infrastructure Partners
+
+| Partner | Integration | Status |
+|---------|-------------|--------|
+| **Realms** | DAO Governance + Launchpad | ✅ Planned |
+| **Raydium** | DEX Liquidity | ✅ Planned |
+| **Solana** | Core Blockchain | ✅ Native |
 
 ### Revenue Model
 
