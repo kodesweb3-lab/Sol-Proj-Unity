@@ -5,8 +5,8 @@ WORKDIR /app
 # Copy package files
 COPY npc-game-mvp/package*.json ./
 
-# Install dependencies
-RUN npm ci
+# Install dependencies (use install, not ci, since no lockfile)
+RUN npm install
 
 # Copy source code
 COPY npc-game-mvp/ ./
