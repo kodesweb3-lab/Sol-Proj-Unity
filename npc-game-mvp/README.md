@@ -1,26 +1,28 @@
 # 🎮 NPC-GAME MVP
 
-Complete MVP for NPC-GAME AI Agent Gaming Token - Colosseum AI Hackathon Entry.
+Complete MVP for NPC-GAME AI Agent Gaming Token presale.
 
-## 🚀 Features
+## 🚀 Quick Deploy on Railway
 
-### Landing Page
-- Professional dark theme with glassmorphism
-- Hero section with stats
-- Features, Tokenomics, Roadmap, FAQ sections
-- Presale waitlist form
+### Option 1: Railway CLI (Recommended)
+```bash
+# Install Railway
+npm i -g @railway/cli
 
-### Presale System
-- Collect wallet + email + investment amount
-- Admin panel at `/admin` to view signups
-- Export CSV, copy emails
-- Simple JSON file storage 🎮 Play Chess vs
+# Login
+railway login
 
-### AI
-- `/play` - Play chess against AI opponents
-- 3 difficulty levels: Novice, Intermediate, Expert
-- Move history tracking
-- Coming soon: Betting with SOL
+# Deploy
+cd npc-game-mvp
+railway init
+railway up
+```
+
+### Option 2: GitHub + Railway
+1. Push to GitHub
+2. Go to https://railway.app
+3. "New Project" → "Deploy from GitHub"
+4. Select this repository
 
 ## 📁 Project Structure
 
@@ -29,8 +31,7 @@ npc-game-mvp/
 ├── src/
 │   ├── pages/
 │   │   ├── index.tsx          # Landing page
-│   │   ├── play.tsx          # Chess game
-│   │   ├── admin.tsx         # Admin panel
+│   │   ├── admin.tsx         # Admin panel (view signups)
 │   │   └── api/
 │   │       └── presale.ts    # API for signups
 │   ├── components/
@@ -41,58 +42,96 @@ npc-game-mvp/
 │   │   ├── Roadmap.tsx
 │   │   ├── PresaleForm.tsx
 │   │   ├── FAQ.tsx
-│   │   ├── Footer.tsx
-│   │   └── game/
-│   │       └── ChessGame.tsx # Chess vs AI
+│   │   └── Footer.tsx
 │   └── styles/
 │       └── globals.css
 ├── data/
-│   └── presale.json          # Stores signups
+│   └── presale.json          # Stores signups (auto-created)
 ├── package.json
 ├── next.config.js
 └── tailwind.config.js
 ```
 
+## 🎯 Features
+
+- **Landing Page**: Professional dark theme with glassmorphism
+- **Presale Form**: Collect wallet + email + investment interest
+- **Admin Panel**: View signups, export CSV, copy emails
+- **API**: Simple JSON file storage (no database needed)
+- **Responsive**: Mobile-optimized design
+
+## 🔗 Important Links
+
+| Page | URL |
+|------|-----|
+| Landing Page | `/` |
+| Admin Panel | `/admin` |
+| API | `/api/presale` |
+
+## 📊 Admin Panel
+
+Access at `/admin` to:
+- View all presale signups
+- See total count and email count
+- Download CSV for analysis
+- Copy all emails for outreach
+
+## ⚙️ Configuration
+
+### Environment Variables (Optional)
+```env
+# Railway sets these automatically
+NEXT_PUBLIC_SITE_URL=https://your-app.railway.app
+```
+
+### Presale Details
+Edit in `src/components/PresaleForm.tsx`:
+- Minimum: 0.25 SOL
+- Maximum: 5 SOL per wallet
+- Price: 1 SOL = 250,000 $NPC
+
 ## 🛠️ Development
 
 ```bash
+# Install dependencies
 npm install
+
+# Run locally
 npm run dev
+
+# Build for production
+npm run build
+
+# Start production server
+npm run start
 ```
 
-Visit:
-- Landing: http://localhost:3000
-- Play: http://localhost:3000/play
-- Admin: http://localhost:3000/admin
+## 📦 Deploy Output
 
-## 🚀 Deploy on Railway
+After `npm run build`, deploy the `.next` output or use:
+- Vercel: `vercel`
+- Railway: `railway up`
+- Docker: `Dockerfile` (create if needed)
 
-```bash
-cd npc-game-mvp
-npm i -g @railway/cli
-railway login
-railway init
-railway up
-```
+## 🚂 Railway Deployment
 
-## 📊 Colosseum Hackathon
+This project includes Railway configuration files:
+- `railway.json` - Specifies build and start commands
+- `railway.nix` - Nixpacks configuration
+- `start.sh` - Fallback startup script
 
-- **Agent:** ClawKogaionAgent
-- **Day:** 4/10
-- **Status:** MVP Complete
-- **GitHub:** github.com/kodesweb3-lab/Sol-Proj-Unity
+If deployment fails, Railway should auto-detect Next.js from `package.json`.
 
-## 🎯 Tokenomics
+## 🔒 Security Notes
 
-- **Supply:** 100M $NPC
-- **Presale:** 40M (40%)
-- **Price:** 1 SOL = 250K $NPC
-- **Cap:** 40 SOL
+- **presale.json** stores all signups - backup regularly!
+- For production, consider using a database (PostgreSQL, MongoDB)
+- Add rate limiting to `/api/presale` in production
 
-## 🐺 Built by
+## 📝 License
 
-ClawKogaionAgent - Autonomous AI Developer
+MIT
 
 ---
 
-*Colosseum AI Hackathon Day 4*
+Built with ❤️ by ClawKogaionAgent
