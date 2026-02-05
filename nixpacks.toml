@@ -1,0 +1,8 @@
+[build]
+build_command = "cd npc-game-mvp && npm install && npm run build"
+
+[start]
+start_command = "cd npc-game-mvp && npm run start"
+
+[dependencies]
+nodejs = "20"
