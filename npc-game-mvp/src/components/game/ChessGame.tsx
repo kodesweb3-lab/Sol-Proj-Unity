@@ -45,7 +45,7 @@ export default function ChessGame() {
   const [gameStarted, setGameStarted] = useState(false)
 
   // Simple valid moves calculator
-  const getValidMoves = useCallback((board: string[][][], row: number, col: number): { row: number; col: number }[] => {
+  const getValidMoves = useCallback((board: (string | null)[][], row: number, col: number): { row: number; col: number }[] => {
     const piece = board[row][col]
     if (!piece) return []
 
