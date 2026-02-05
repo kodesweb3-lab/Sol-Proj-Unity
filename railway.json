@@ -12,16 +12,6 @@
     "healthcheckTimeout": 30,
     "directory": "npc-game-mvp"
   },
-  "environments": [
-    {
-      "name": "production",
-      "build": {
-        "builder": "NIXPACKS",
-        "buildCommand": "cd npc-game-mvp && npm install && npm run build",
-        "rootDir": "npc-game-mvp"
-      }
-    }
-  ],
   "variables": {
     "NODE_ENV": "production"
   }
