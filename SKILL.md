@@ -1,252 +1,93 @@
 ---
-name: solana-dev-kogaion
-version: 1.0.0
-description: Kogaion-specific Solana integration for autonomous agents. Token launches, PDA management, compute optimization, and agent-specific patterns.
-metadata:
-  category: blockchain
-  api_base: https://kogaion.fun/api/solana
-  capabilities:
-    - token-creation
-    - pda-management
-    - compute-optimization
-    - priority-fees
-    - liquidity-pools
+name: solana-dev
+description: End-to-end Solana development playbook (Jan 2026). Prefer Solana Foundation framework-kit (@solana/client + @solana/react-hooks) for React/Next.js UI. Prefer @solana/kit for all new client/RPC/transaction code. When legacy dependencies require web3.js, isolate it behind @solana/web3-compat (or @solana/web3.js as a true legacy fallback). Covers wallet-standard-first connection (incl. ConnectorKit), Anchor/Pinocchio programs, Codama-based client generation, LiteSVM/Mollusk/Surfpool testing, and security checklists.
+user-invocable: true
 ---
 
-# Solana Development for Kogaion Agents
+# Solana Development Skill (framework-kit-first)
 
-**Optimized for autonomous AI agents building on Solana**
+## What this Skill is for
 
-## Quick Start
+Use this Skill when the user asks for:
+- Solana dApp UI work (React / Next.js)
+- Wallet connection + signing flows
+- Transaction building / sending / confirmation UX
+- On-chain program development (Anchor or Pinocchio)
+- Client SDK generation (typed program clients)
+- Local testing (LiteSVM, Mollusk, Surfpool)
+- Security hardening and audit-style reviews
 
-```typescript
-import { KogaionSolana } from '@kogaion/solana';
+## Default stack decisions (opinionated)
 
-// Initialize
-const solana = new KogaionSolana({
-  rpcUrl: 'https://api.mainnet-beta.solana.com',
-  commitment: 'confirmed',
-  computeUnits: 200_000,
-});
-```
+1) **UI: framework-kit first**
+- Use `@solana/client` + `@solana/react-hooks`.
+- Prefer Wallet Standard discovery/connect via the framework-kit client.
 
-## Agent-Specific Features
+2) **SDK: @solana/kit first**
+- Prefer Kit types (`Address`, `Signer`, transaction message APIs, codecs).
+- Prefer `@solana-program/*` instruction builders over hand-rolled instruction data.
 
-### 1. PDA Derivation
+3) **Legacy compatibility: web3.js only at boundaries**
+- If you must integrate a library that expects web3.js objects (`PublicKey`, `Transaction`, `Connection`),
+ use `@solana/web3-compat` as the boundary adapter.
+- Do not let web3.js types leak across the entire app; contain them to adapter modules.
 
-Agents need predictable addresses for state storage:
+4) **Programs**
+- Default: Anchor (fast iteration, IDL generation, mature tooling).
+- Performance/footprint: Pinocchio when you need CU optimization, minimal binary size,
+ zero dependencies, or fine-grained control over parsing/allocations.
 
-```typescript
-// Agent state PDA
-const agentPDA = KogaionSolana.deriveAgentPDA('agent-123', PROGRAM_ID);
+5) **Testing**
+- Default: LiteSVM or Mollusk for unit tests (fast feedback, runs in-process).
+- Use Surfpool for integration tests against realistic cluster state (mainnet/devnet) locally.
+- Use solana-test-validator only when you need specific RPC behaviors not emulated by LiteSVM.
 
-// Memory PDA
-const memoryPDA = KogaionSolana.deriveMemoryPDA('agent-123', 'conversation-456', PROGRAM_ID);
+## Operating procedure (how to execute tasks)
 
-// Token state PDA
-const tokenPDA = KogaionSolana.deriveTokenPDA(mintAddress, PROGRAM_ID);
+When solving a Solana task:
 
-// Escrow PDA
-const escrowPDA = KogaionSolana.deriveEscrowPDA(
-  providerAddress,
-  consumerAddress,
-  'service-id',
-  PROGRAM_ID
-);
-```
+### 1. Classify the task layer
+- UI/wallet/hook layer
+- Client SDK/scripts layer
+- Program layer (+ IDL)
+- Testing/CI layer
+- Infra (RPC/indexing/monitoring)
 
-### 2. Compute Budget Optimization
+### 2. Pick the right building blocks
+- UI: framework-kit patterns.
+- Scripts/backends: @solana/kit directly.
+- Legacy library present: introduce a web3-compat adapter boundary.
+- High-performance programs: Pinocchio over Anchor.
 
-Agents can optimize compute for different operations:
+### 3. Implement with Solana-specific correctness
 
-```typescript
-// Default (general operations)
-KogaionSolana.createComputeBudgetInstructions(200_000, 500_000);
+Always be explicit about:
+- cluster + RPC endpoints + websocket endpoints
+- fee payer + recent blockhash
+- compute budget + prioritization (where relevant)
+- expected account owners + signers + writability
+- token program variant (SPL Token vs Token-2022) and any extensions
 
-// High-compute (complex DeFi)
-KogaionSolana.createComputeBudgetInstructions(1_400_000, 2_000_000);
+### 4. Add tests
+- Unit test: LiteSVM or Mollusk.
+- Integration test: Surfpool.
+- For "wallet UX", add mocked hook/provider tests where appropriate.
 
-// Low-compute (simple transfers)
-KogaionSolana.createComputeBudgetInstructions(100_000, 250_000);
-```
+### 5. Deliverables expectations
 
-### 3. Priority Fee Estimation
+When you implement changes, provide:
+- exact files changed + diffs (or patch-style output)
+- commands to install/build/test
+- a short "risk notes" section for anything touching signing/fees/CPIs/token transfers
 
-```typescript
-// Get optimal priority fee based on network
-const fee = await solana.getOptimalPriorityFee();
-// Returns: { priorityFee: 750000, unit: 'microlamports', recommendation: 'medium' }
-```
+## Progressive disclosure (read when needed)
 
-### 4. Token Launch for Agents
-
-```typescript
-import { AgentTokenLaunchService } from '@kogaion/token-launch';
-
-const service = new AgentTokenLaunchService(rpcUrl, feePayer);
-
-// Estimate cost before launching
-const estimate = await service.estimateLaunchCost({
-  name: 'MyAgentToken',
-  symbol: 'AGT',
-  uri: 'ipfs://...',
-  decimals: 9,
-  supply: 1000000000,
-  rpcUrl: 'https://api.mainnet-beta.solana.com',
-});
-
-// Launch token
-const result = await service.launchToken({
-  name: 'MyAgentToken',
-  symbol: 'AGT',
-  uri: 'ipfs://...',
-  decimals: 9,
-  supply: 1000000000,
-  creator: agentWallet,
-  feePayer,
-  rpcUrl: 'https://api.mainnet-beta.solana.com',
-  initialLiquiditySol: 5,
-});
-
-// Result includes: mint, associatedToken, transactionSignature, explorerUrl
-```
-
-## API Endpoints
-
-### Advanced Solana Operations
-
-```bash
-# Get priority fee recommendation
-GET /api/solana/advanced?action=priority-fee
-
-# Get account info
-GET /api/solana/advanced?action=account&address=...
-
-# Get token balance
-GET /api/solana/advanced?action=balance&address=...
-
-# Derive PDA
-GET /api/solana/advanced?action=pda&type=agent&agentId=...
-
-# Simulate transaction
-POST /api/solana/advanced
-{
-  "action": "simulate",
-  "instructions": ["...", "..."]
-}
-```
-
-### Token Launch
-
-```bash
-# Estimate launch cost
-POST /api/solana/token-launch
-{
-  "action": "estimate",
-  "name": "MyToken",
-  "symbol": "MTK",
-  "uri": "ipfs://...",
-  "decimals": 9,
-  "supply": 1000000000
-}
-
-# Launch token
-POST /api/solana/token-launch
-{
-  "action": "launch",
-  "name": "MyToken",
-  "symbol": "MTK",
-  "uri": "ipfs://...",
-  "decimals": 9,
-  "supply": 1000000000,
-  "creator": "WALLET_ADDRESS",
-  "feePayer": "WALLET_ADDRESS"
-}
-
-# Create liquidity pool
-POST /api/solana/token-launch
-{
-  "action": "create-pool",
-  "mint": "TOKEN_MINT",
-  "baseAmount": 5,
-  "quoteAmount": 1000000,
-  "startPrice": 0.000005,
-  "owner": "WALLET_ADDRESS"
-}
-```
-
-## Program Addresses
-
-```typescript
-const KOGAION_PROGRAMS = {
-  KOGAION_TOKEN: 'Kogaion111111111111111111111111111111',
-  JUPITER: 'JUPyiwrYJFskUPiHa7hkeR8VUtkqjberbSewc5LmmFfd',
-  RAYDIUM: 'RaydiumLP111111111111111111111111111111',
-  METEORA: 'MeteoraLP111111111111111111111111111111',
-  ORCA: 'orcaEKTdK7LKz57vaAYr9QeNsVEPfiu6QeM1jWT8vK47',
-};
-```
-
-## Best Practices for Agents
-
-### 1. Always Estimate Before Launching
-```typescript
-const estimate = await service.estimateLaunchCost(params);
-if (estimate.totalSol > agentBudget) {
-  // Adjust parameters or skip
-}
-```
-
-### 2. Use Priority Fees for Time-Sensitive Operations
-```typescript
-// Agents trading or competing in hackathons need faster confirmation
-const fee = await solana.getOptimalPriorityFee();
-if (fee.recommendation === 'high') {
-  // Consider delaying or increasing budget
-}
-```
-
-### 3. Store PDAs in Agent Memory
-```typescript
-// Remember where you deployed
-await agentMemory.store({
-  type: 'EPISODIC',
-  content: `Deployed token ${symbol} at ${mint.toBase58()}`,
-  importance: 0.9,
-  entities: [mint.toBase58()],
-});
-```
-
-### 4. Use Versioned Transactions When Possible
-```typescript
-// More efficient for complex transactions
-const { transaction } = await solana.buildAgentTransaction(instructions, {
-  useVersionedTransaction: true,
-  addressLookupTables: [lut1, lut2],
-});
-```
-
-## Error Handling
-
-```typescript
-try {
-  const result = await service.launchToken(params);
-} catch (error) {
-  if (error.message.includes('insufficient funds')) {
-    // Reduce liquidity or scale down
-  } else if (error.message.includes('already in use')) {
-    // Try different symbol
-  }
-}
-```
-
-## Resources
-
-- **Solana Docs:** https://docs.solana.com
-- **Solana Kit:** https://github.com/solana-labs/solana-kit
-- **Anchor:** https://www.anchor-lang.com
-- **Kogaion API:** https://kogaion.fun/api
-
----
-
-*Built for autonomous agents building on Solana.*
+- UI + wallet + hooks: [frontend-framework-kit.md](frontend-framework-kit.md)
+- Kit ↔ web3.js boundary: [kit-web3-interop.md](kit-web3-interop.md)
+- Anchor programs: [programs-anchor.md](programs-anchor.md)
+- Pinocchio programs: [programs-pinocchio.md](programs-pinocchio.md)
+- Testing strategy: [testing.md](testing.md)
+- IDLs + codegen: [idl-codegen.md](idl-codegen.md)
+- Payments: [payments.md](payments.md)
+- Security checklist: [security.md](security.md)
+- Reference links: [resources.md](resources.md)
